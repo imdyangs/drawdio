@@ -13,6 +13,8 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  border: 0px;
+  margin: 0px;
 }
 
 h1{
@@ -75,6 +77,17 @@ button:hover{
 
     position: absolute;
     height: 100%;
+}
+
+.textbarAlbums{
+  background-color: rgba(50, 50, 50, 0.75);
+
+  /* text element */
+  color: white;
+  text-align: right;
+
+  position: absolute;
+  height: 100%;
 }
 
 .center-description{

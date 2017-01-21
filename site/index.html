@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
    <meta charset="utf-8" />
-   <title>Drawd.io</title>
+   <title>drawd.io</title>
 
    <!-- Script: Jquery, AwwApp -->
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -23,25 +23,25 @@
    <!-- initial project description banner -->
    <div id="introbar" class="textbar">
        <div id="bartext" class="center-description">
-           <img id="logo" src="image/logo.png">
+           <img class="imageClass" id="logo" src="image/logo.png">
            <p class="description" id="project-description">
                A music explorer that lets you upload or draw your image, and find albums with similar artwork. Find your mood music visually.
             </p>
-           <button id="draw-btn" onClick="showCanvas()">
+           <button class="buttonClass" id="draw-btn" onClick="showCanvas()">
                <span class="btn-label">Draw</span>
             </button>
         </div>
    </div>
 
     <!-- Description Text -->
-    <div id="helptext" class="textbar hidden">
-        <div class="center-description" id="helpdescription">
-            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras suscipit tortor nec velit posuere molestie. Suspendisse ut ligula non urna fringilla tincidunt non quis diam. </p>
-            <br>
+    <div id="helptext" class="textbarAlbums">
+      <div class="center-description" id="helpdescription">
+          <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras suscipit tortor nec velit posuere molestie. Suspendisse ut ligula non urna fringilla tincidunt non quis diam. </p>
+          <br>
             <button id="find" class="center" onClick="lookForSong()">
                 <span class="btn-label">Find Music</span>
             </button>
-        </div>
+      </div>
     </div>
 
 
