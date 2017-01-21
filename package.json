@@ -25,7 +25,13 @@
   },
   "homepage": "https://github.com/sl/drawdio#readme",
   "dependencies": {
+    "csvtojson": "^1.1.2",
+    "gm": "^1.23.0",
+    "jpeg-js": "^0.2.0",
     "jsfeat": "0.0.8",
-    "png-js": "^0.1.1"
+    "mongodb": "^2.2.21",
+    "netpbm": "^1.1.1",
+    "png-js": "^0.1.1",
+    "request": "^2.79.0"
   }
 }
