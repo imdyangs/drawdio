@@ -48,13 +48,13 @@ function showCanvas(){
     //show textbar
     TweenMax.from(document.getElementById('helptext'), 1.5, { ease: Power2.easeInOut, x: 750});
 
+
     //fade in pad
-    TweenMax.from(document.getElementById('aww-wrapper'), 1, { ease: Power2.easeInOut, opacity:0});
+    TweenMax.from(document.getElementById('aww-wrapper'), 1, { ease: SlowMo.ease.config(0.1, 0.1, false), opacity:0, delay: 0.7});
 
     /* add drawPad */
     $('#aww-wrapper').show();
     $('#helptext').show();
-    $("#cover").css("width", "640px");
 }
 
 //show song details, go button
@@ -63,10 +63,12 @@ function showSongDetail(){
     TweenMax.to(document.getElementById('helptext'), 1.5, { ease: Power2.easeInOut, x: 2000});
 
     //show vinyl
-    TweenMax.to('.discAnimate', 1.8, { ease: Power2.easeInOut, rotation: 0, x: 0, scale: 1});
+    TweenMax.to('.discAnimate', 0, {scale: 1});
+    TweenMax.to('.discAnimate', 1.8, { ease: Power2.easeInOut, rotation: 0, x: 0, scale: 1, delay: 0.7});
 
     //hide pad
-  //  TweenMax.to(document.getElementById('aww-wrapper'), 2.3, { ease: Power2.easeInOut. x: -400});
+    TweenMax.to(document.getElementById('aww-wrapper'), 2.2, { ease: Power2.easeInOut, x: -400, delay: 1.8});
+    TweenMax.to(document.getElementById('cover'), 2.2, { ease: Power2.easeInOut, x: -3300, delay: 1.8});
 }
 
 
