@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/sl/drawdio#readme",
   "dependencies": {
-    "jsfeat": "0.0.8"
+    "jsfeat": "0.0.8",
+    "png-js": "^0.1.1"
   }
 }
