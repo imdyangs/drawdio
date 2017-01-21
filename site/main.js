@@ -5,6 +5,7 @@
 
 // Aww board API, board initialization
  var aww = new AwwBoard('#aww-wrapper', {
+    menuOrder: ['colors', 'sizes', 'tools'],
     apiKey: '391e33ce-16fb-41e9-aced-ad424988deba'
 });
 
@@ -33,14 +34,18 @@ function getDataURL(){
 
 function showCanvas(){
 
+    function downsize(){
+      TweenMax.to('.discAnimate', 1.5, {scale: 0.3})
+    }
+
     //hide textbar
     TweenMax.to('#introbar', 1.5, { ease: Power2.easeInOut, x: -1000});
 
     //hide vinyl
-    TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 60, x: -308});
+    TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 60, x: -308, onComplete:downsize});
 
     //show textbarAlbums
-    TweenMax.from('.textbarAlbums', 1.5, { ease: Power2.easeInOut, x: 750});
+    TweenMax.from(document.getElementById('helptext'), 1.5, { ease: Power2.easeInOut, x: 750});
 
     /* add drawPad */
     $('#aww-wrapper').show();
@@ -53,10 +58,10 @@ function toggleBanner(state){
 }
 
 function lookForSong(){
-    
+
 }
 
 
 function playSong(){
-    
+
 }

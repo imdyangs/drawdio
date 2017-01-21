@@ -133,18 +133,18 @@ h3.help-header{
     font-family: Poiret One, sans-serif;
     font-weight: 200;
     font-size: 30pt;
-    
+
     margin-bottom: 5px;
-    /*
+
     padding-left: 40px;
     padding-right: 30px;
-    */
+    
 }
 
 h5.comment{
     font-size: 13pt;
     color: rgb(200, 200, 200);
-    
+
     margin-top: 15px;
 }
 /********************* Special Class ********************/
@@ -226,5 +226,5 @@ h5.comment{
 }
 
 #return-button{
-    
+
 }

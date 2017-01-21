@@ -1,5 +1,5 @@
 //inital disc sliding out
-TweenMax.from('.discAnimate', 2, {rotation: 60, x: -260, ease: Bounce.easeOut, delay: 0.9});
+TweenMax.from('.discAnimate', 2, {scale: 0.7, rotation: 60, x: -260, ease: Bounce.easeOut, delay: 0.9});
 
 
 //textbar fade in
