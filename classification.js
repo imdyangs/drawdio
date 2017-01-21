@@ -20,11 +20,18 @@ const processImage = function(path, callback) {
 
 
   // roughEdgeFrequency: percentage of pixels that contain a rough edge (0-1)
+  // averageRed: average pixel red value from (0-1)
+  // averageGreen: average pixel green value from (0-1)
+  // averageBlue: average pixel blue value from (0-1)
+  // hueDist: array containing hue distributions at intervals of 1/6 spectrums
   var imageData = {};
 
   image.decode(function(pixels) {
     nextProcess(pixels);
   });
+
+  
+  
 
   // sets imageData['roughEdgeFrequency']
   const canny = function (pixels) {
@@ -45,20 +52,50 @@ const processImage = function(path, callback) {
     }
     var roughEdgeFrequency = edgePixels / size;
     imageData['roughEdgeFrequency'] = roughEdgeFrequency;
+    nextProcess(pixels);
   };
 
-  const processes = [canny];
+  // sets averageRed, averageGreen, averageBlue, and hueDist
+  const colorProfile = function (pixels) {
+    imageData['averageRed'] = 0;
+    imageData['averageGreen'] = 0;
+    imageData['averageBlue'] = 0;
+    imageData['hueDist'] = [0,0,0,0,0,0];
+    nextProcess(pixels);
+  }
+
+  const weights = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+  const processes = [canny, colorProfile];
   var currentProcess = 0;
+
   const nextProcess = function(pixels) {
     if (currentProcess >= processes.length) {
       const outVector = [
-        imageData['roughEdgeFrequency']
+        imageData['roughEdgeFrequency'],
+        imageData['averageRed'],
+        imageData['averageGreen'],
+        imageData['averageBlue'],
+        imageData['hueDist'][0],
+        imageData['hueDist'][1],
+        imageData['hueDist'][2],
+        imageData['hueDist'][3],
+        imageData['hueDist'][4],
+        imageData['hueDist'][5],
       ];
-      callback(outVector);
+      var weighted = [];
+      for (var i = 0; i < outVector.length; ++i) {
+        weighted.push(outVector[i] * weights[i]);
+      }
+      callback(weighted);
+      return;
     }
-    processes[currentProcess](pixels);
-    ++currentProcess;
+    console.log('running process ' + currentProcess)
+    processes[currentProcess++](pixels);
+    
   }
+
+  
 
 };
 
