@@ -39,17 +39,19 @@
 
     <!-- Description Text -->
     <div id="helptext" class="textbar hidden">
-        <div class="center-description" id="helpdescription">
+        <div class="center-description">
             <h3 class="help-header">
                 Draw an album<br>
                 <div style="text-align:right;margin-right:10px;">or try these...</div>
             </h3>
            <br><br>
-            <!-- Recommended Album Arts -->
-            <img class="recommendedArt" src="image/x.jpg">
-            <img class="recommendedArt" src="image/art_vivalavida.jpg">
-            <img class="recommendedArt" src="image/stickyfinger.jpg">
-            <img class="recommendedArt" src="image/hamilton.jpg">
+            <div style="text-align:center;">
+                <!-- Recommended Album Arts -->
+                <img class="recommendedArt" src="image/x.jpg">
+                <img class="recommendedArt" src="image/art_vivalavida.jpg">
+                <img class="recommendedArt" src="image/stickyfinger.jpg">
+                <img class="recommendedArt" src="image/hamilton.jpg">
+            </div>
             <br><br>
             <button id="go" class="right" onClick="lookForSong()">
                 <span class="btn-label">Go</span>
@@ -63,6 +65,7 @@
     
     <!-- return button -->
     <div class="returnButton" id="return-button"><img src="./image/returnButton.png"></div>
+    
     <!-- Playing media -->
     <div id="songDetail">
     </div>

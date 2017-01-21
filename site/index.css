@@ -101,7 +101,7 @@ button:hover{
 }
 
 .center-description{
-    transform: translate(0, -50%);
+    transform: translate(0%, -50%);
     position: inherit;
     top: 50%;
 }
@@ -128,11 +128,17 @@ h1.project-title{
 }
 
 h3.help-header{
+    text-align: left;
     color: white;
     font-family: Poiret One, sans-serif;
     font-weight: 200;
     font-size: 30pt;
+    
     margin-bottom: 5px;
+    /*
+    padding-left: 40px;
+    padding-right: 30px;
+    */
 }
 
 h5.comment{
@@ -187,11 +193,6 @@ h5.comment{
     text-align: right;
 }
 
-#helpdescription{
-    text-align: center;
-    padding-left: 10px;
-
-}
 
 #draw-btn{
     margin-right: 20px;
@@ -207,7 +208,7 @@ h5.comment{
     background-color: white;
 
     /* intact with the div overhead */
-    position: absolute;
+    position: fixed;
     transform: translate(+13%, -50%);
     right: 47%;
     top: 50%;
@@ -222,4 +223,8 @@ h5.comment{
     transform: translate(0, -50%);
     right: 20%;
     top: 50%;
+}
+
+#return-button{
+    
 }
