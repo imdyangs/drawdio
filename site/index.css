@@ -53,6 +53,19 @@ button:hover{
     border: solid 3px black;
 }
 
+.returnButton{
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    transform: translate(-50%, -50%);
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
 .btn-label{
     margin: 20px;
     padding-bottom: 5px;

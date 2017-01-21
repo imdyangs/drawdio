@@ -21,13 +21,8 @@ $( document ).ready(function() {
   $('#aww-wrapper').hide();
   $('#helptext').hide();
 
-  //fade in helpdescription
-  var helpDescrip = document.getElementById("helpdescription");
-  var findButton = document.getElementById("find");
+  //hide back button
 
-  TweenMax.from('.imageClass', 1, {opacity: 0, delay: 2.3});
-  TweenMax.from('.description', 1, {opacity: 0, delay: 2.6});
-  TweenMax.from('.buttonClass', 1, {opacity: 0, delay: 2.9});
 });
 
 // Change field of form to dataURL to prepare form submission
