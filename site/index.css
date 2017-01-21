@@ -21,10 +21,6 @@ h1{
     font-family: Poiret One, Didot, sans-serif;
 }
 
-h1.project-title{
-    font-size: 60pt;
-}
-
 body{
     overflow: hidden;
 }
@@ -99,6 +95,7 @@ button:hover{
   color: white;
   text-align: right;
 
+  padding: 15px;
   position: absolute;
   height: 100%;
 }
@@ -109,7 +106,8 @@ button:hover{
     top: 50%;
 }
 
-/* General class */
+/********************* General class *********************/
+
 .hidden{
     display: none;
 }
@@ -120,7 +118,42 @@ button:hover{
     transform: translate(-50%, 0%);
 }
 
-/* unique component */
+.right{
+    text-align: right;
+    transform: translate(-50%, 0%);
+}
+
+h1.project-title{
+    font-size: 60pt;
+}
+
+h3.help-header{
+    color: white;
+    font-family: Poiret One, sans-serif;
+    font-weight: 200;
+    font-size: 30pt;
+    margin-bottom: 5px;
+}
+
+h5.comment{
+    font-size: 13pt;
+    color: rgb(200, 200, 200);
+    
+    margin-top: 15px;
+}
+/********************* Special Class ********************/
+
+.recommendedArt{
+    width: 40%;
+    margin: 10px;
+}
+
+.recommendedArt:hover{
+    box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.9);
+}
+
+/********************* unique component *********************/
+
 #project-description{
     position: auto;
     width: 50%;
@@ -185,7 +218,7 @@ button:hover{
     width: 500px;
 
     /* achoring at the center */
-    position: absolute;
+    position: fixed;
     transform: translate(0, -50%);
     right: 20%;
     top: 50%;

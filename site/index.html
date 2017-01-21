@@ -7,13 +7,17 @@
    <!-- Script: Jquery, AwwApp -->
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
    <script src="https://awwapp.com/static/widget/js/aww.min.js"></script>
+   <!-- Google Font: Poiret One -->
+   <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
    <!-- Stylesheet -->
    <link rel="stylesheet" href="index.css">
 
 </head>
 
 <body>
-   <img src="image/disc.png" class="discAnimate" id="disc">
+    
+   <!-- rolling vinyl -->
+   <img src="image/disc_word.png" class="discAnimate" id="disc">
 
    <!-- canvas -->
    <div id="cover">
@@ -34,17 +38,34 @@
    </div>
 
     <!-- Description Text -->
-    <div id="helptext" class="textbarAlbums">
-      <div class="center-description" id="helpdescription">
-          <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras suscipit tortor nec velit posuere molestie. Suspendisse ut ligula non urna fringilla tincidunt non quis diam. </p>
-          <br>
-            <button id="find" class="center" onClick="lookForSong()">
-                <span class="btn-label">Find Music</span>
+    <div id="helptext" class="textbar hidden">
+        <div class="center-description" id="helpdescription">
+            <h3 class="help-header">
+                Draw an album<br>
+                <div style="text-align:right;margin-right:10px;">or try these...</div>
+            </h3>
+           <br><br>
+            <!-- Recommended Album Arts -->
+            <img class="recommendedArt" src="image/x.jpg">
+            <img class="recommendedArt" src="image/art_vivalavida.jpg">
+            <img class="recommendedArt" src="image/stickyfinger.jpg">
+            <img class="recommendedArt" src="image/hamilton.jpg">
+            <br><br>
+            <button id="go" class="right" onClick="lookForSong()">
+                <span class="btn-label">Go</span>
             </button>
-      </div>
+        </div>
     </div>
-
-      <div class="returnButton" id="return-button"><img src="./image/returnButton.png"></div>
+    
+    <!-- Playing media -->
+    <div id="songDetail">
+    </div>
+    
+    <!-- return button -->
+    <div class="returnButton" id="return-button"><img src="./image/returnButton.png"></div>
+    <!-- Playing media -->
+    <div id="songDetail">
+    </div>
 
    <footer>
        Created by Sam, Satoru, Tiffany, David in PennApps XV.

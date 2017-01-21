@@ -1,6 +1,8 @@
 /* This file controls front-end animation and page transition */
 
 
+/******************* Embedding Aww Board *******************/
+
 // Aww board API, board initialization
  var aww = new AwwBoard('#aww-wrapper', {
     apiKey: '391e33ce-16fb-41e9-aced-ad424988deba'
@@ -9,9 +11,6 @@
 // Get dataURL of current canvas
 function saveBoard(){
   var img = aww.getImage();
-
-  // testing purpose: show current state of the canvas
-  //document.getElementById('preview').innerHTML = '<img src="'+img+'"/>';
   return img;
 }
 
@@ -35,7 +34,7 @@ function getDataURL(){
 function showCanvas(){
 
     //hide textbar
-    TweenMax.to('.textbar', 1.5, { ease: Power2.easeInOut, x: -1000});
+    TweenMax.to('#introbar', 1.5, { ease: Power2.easeInOut, x: -1000});
 
     //hide vinyl
     TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 60, x: -308});
@@ -46,8 +45,18 @@ function showCanvas(){
     /* add drawPad */
     $('#aww-wrapper').show();
     $('#helptext').show();
+    $("#cover").css("width", "600px");
 }
 
 function toggleBanner(state){
     if (state === 'hide') $('#introbar').addClass('hidden');
+}
+
+function lookForSong(){
+    
+}
+
+
+function playSong(){
+    
 }
