@@ -23,6 +23,10 @@ h1.project-title{
     font-size: 60pt;
 }
 
+body{
+    overflow: hidden;
+}
+
 footer{
     /* anchor at bottom right */
     position: absolute;
@@ -52,14 +56,31 @@ button:hover{
     padding-bottom: 5px;
     padding-top: 5px;
     
-    font-family: Tw Cen MT, sans-serif;
+    font-family: Consolas, sans-serif;
     font-size: 14pt;
 }
 
 .description{
     font-family: Cochin, sans-serif;
-    text-align: right;
     font-size: 15pt;
+    color: rgb(200, 200, 200);
+}
+
+.textbar{
+    background-color: rgba(50, 50, 50, 0.75);
+    
+    /* text element */
+    color: white;
+    text-align: right;
+    
+    position: absolute;
+    height: 100%;
+}
+
+.center-description{
+    transform: translate(0, -50%);
+    position: inherit;
+    top: 50%;
 }
 
 /* General class */
@@ -67,12 +88,18 @@ button:hover{
     display: none;
 }
 
+.center{
+    position: inherit;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
 /* unique component */
 #project-description{
     position: auto;
     width: 50%;
     transform: translate(100%, 0);
-    color: rgb(200, 200, 200);
+    text-align: right;
 }
 
 #preview{
@@ -84,15 +111,12 @@ button:hover{
     margin: 0px;
     padding: 30px;  /* hard coded */
     
-    background-color: rgba(50, 50, 50, 0.75);
-    
-    /* text element */
-    color: white;
-    text-align: right;
-    
-    position: absolute;
-    width: 53%;    /* can adjust accordingly */
-    height: 100%;
+    width: 57%;    /* can adjust accordingly */
+}
+
+#helptext{
+    width: 30%;
+    right: 10%;
 }
 
 #logo{
@@ -101,10 +125,12 @@ button:hover{
 
 #bartext{
     padding-right: 5%;
-    transform: translate(0, -50%);
-    position: inherit;
-    top: 50%;
     text-align: right;
+}
+
+#helpdescription{
+    text-align: center;
+    padding-left: 5px;
 }
 
 #draw-btn{
@@ -125,7 +151,6 @@ button:hover{
     transform: translate(+13%, -50%);
     right: 47%;
     top: 50%;
-    
     
 }
 
