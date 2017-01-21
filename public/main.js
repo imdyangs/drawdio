@@ -64,14 +64,15 @@ function showSongDetail(){
 
     //show vinyl
     TweenMax.to('.discAnimate', 0, {scale: 1});
-    TweenMax.to('.discAnimate', 2.1, { ease: Power2.easeInOut, rotation: 20, x: -120 , scale: 1, delay: 0.4});
-    TweenMax.to('.discAnimate', 1.6, { ease: Power2.easeInOut, rotation: 60, x: -400, delay: 2.2 });
-    TweenMax.to('.discAnimate', 2.1, { ease: Power2.easeInOut, rotation: 40, x: -50, scale: 1, delay: 3.3});
-    TweenMax.to('.discAnimate', 1.6, { ease: Power2.easeInOut, rotation: 60, x: -308, delay: 5 });
+    TweenMax.to('.discAnimate', 2.4, { ease: Power2.easeInOut, rotation: 20, x: -170 , scale: 1, delay: 0.8});
+    TweenMax.to('.discAnimate', 1.6, { ease: Power2.easeInOut, rotation: 60, x: -380, delay: 2.9 });
+    TweenMax.to('.discAnimate', 2.3, { ease: Power1.easeOut, rotation: 10, x: -70, scale: 1, delay: 5.2});
+    TweenMax.to('.discAnimate', 1.4, { ease: Power2.easeInOut, rotation: 60, x: -340, delay: 7.4 });
+    TweenMax.to('.discAnimate', 1.6, { ease: Power2.easeInOut, rotation: 0, x: 20, delay: 9 });
 
     //hide pad
-    TweenMax.to(document.getElementById('aww-wrapper'), 2.2, { ease: Power2.easeInOut, x: -400, delay: 7});
-    TweenMax.to(document.getElementById('cover'), 2.2, { ease: Power2.easeInOut, x: -3300, delay: 7});
+    TweenMax.to(document.getElementById('aww-wrapper'), 2.2, { ease: Power2.easeInOut, x: -400, delay: 9.3});
+    TweenMax.to(document.getElementById('cover'), 2.2, { ease: Power2.easeInOut, x: -3300, delay: 9.3});
 }
 
 
