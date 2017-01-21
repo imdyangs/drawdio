@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8" />
+   <title>Drawd.io</title>
+    
+   <!-- Script: Jquery, AwwApp -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+   <script src="https://awwapp.com/static/widget/js/aww.min.js"></script>
+   <!-- Stylesheet -->
+   <link rel="stylesheet" href="index.css">
+   
+</head>
+ 
+<body>
+    
+   <h1>Drawdio: Canvas test</h1>
+   <!-- Drawpad -->
+   <div style="width: 600px; height: 400px;" id="aww-wrapper">
+   <!-- Element in which the whiteboard will be shown
+          – modify style as needed -->
+   </div>
+    
+   <br>
+   <h1>Below is a testing image (appear after clicking capture canvas)</h1>
+   <div id="preview"></div>
+   
+    
+   <!-- Change Action of this Form -->
+   <form action="#" method="get" id="canvasForm" onsubmit="getDataURL()">
+       <input type="text" id="imgDataURL" name="DataURL" class="hidden"/>
+       <input type="submit">
+   </form>
+   <button id="capture" onClick="saveBoard()">Capture Canvas</button>
+
+    <script type="text/javascript">
+        
+        // Aww board API, board initialization
+         var aww = new AwwBoard('#aww-wrapper', {
+            apiKey: '391e33ce-16fb-41e9-aced-ad424988deba'
+        });
+        
+        // Get dataURL of current canvas
+        function saveBoard(){
+          var img = aww.getImage();
+            
+          // testing purpose: show current state of the canvas
+          document.getElementById('preview').innerHTML = '<img src="'+img+'"/>';
+          return img;
+        }
+        
+        // Change field of form to dataURL to prepare form submission
+        function getDataURL(){
+            document.getElementById('imgDataURL').value = saveBoard();
+            console.log(document.getElementById('imgDataURL').value);
+            return true;
+        }
+        
+        
+    </script>
+</body>
+</html> 
