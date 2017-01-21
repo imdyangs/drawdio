@@ -1,5 +1,27 @@
 'use strict';
 
+var http = require('http');
+var fs = require('fs');
+var formidable = require('formidable');
+var util = require('util');
+var express = require('express');
+var path = require('path');
+
+const PORT = 3000;
+
+var app = express();
+
+app.set('port', PORT);
+
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+var server = app.listen(app.get('port'), function() {
+  var port = server.address().port;
+  console.log('starting server on port ' + port);
+});
+
+
 // Connection URL
 var url = 'mongodb://localhost:27017/drawdio';
 
