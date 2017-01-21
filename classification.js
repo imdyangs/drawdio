@@ -125,7 +125,7 @@ const processImage = function(path, callback) {
     nextProcess(pixels);
   }
 
-  const getHueIndex = function (r, g, b) {
+  const getHue = function (r, g, b) {
     var min = Math.min(r, g, b);
     var max = Math.max(r, g, b);
     var result = 0;
@@ -141,7 +141,15 @@ const processImage = function(path, callback) {
     if (result < 0) {
       result += 6.0;
     }
-    return Math.round(result);
+    return result;
+  }
+
+  const getHueIndex = function (r, g, b) {
+    return Math.round(getHue(r, g, b));
+  }
+
+  const getFullHue = function (r, g, b) {
+    return Math.floor(getHue(r, g, b) * 60);
   }
 
   // sets averageRed, averageGreen, averageBlue, and hueDist
@@ -150,12 +158,18 @@ const processImage = function(path, callback) {
     var numPixels = pixels.length / 4;
     var hueDist = [0, 0, 0, 0, 0, 0];
 
+    var fullHueDist = [];
+    for (var i = 0; i < 360; ++i) {
+      fullHueDist.push(0);
+    }
+
     for (var i = 0; i < pixels.length; i += 4) {
       var r = pixels[i] / 255.0, g = pixels[i + 1] / 255.0, b = pixels[i + 2] / 255.0;
       sumRed += r;
       sumGreen += g;
       sumBlue += b;
       hueDist[getHueIndex(r, g, b)] += 1.0;
+      ++fullHueDist[getFullHue(r, g, b)];
     }
 
     hueDist = hueDist.map(function (x) { return x / numPixels; });
@@ -164,10 +178,11 @@ const processImage = function(path, callback) {
     imageData['averageGreen'] = sumGreen / numPixels;
     imageData['averageBlue'] = sumBlue / numPixels;
     imageData['hueDist'] = hueDist;
+    imageData['hueMode'] = fullHueDist.indexOf(Math.max.apply(null, fullHueDist));
     nextProcess(pixels);
   }
 
-  const weights = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+  const weights = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
   const processes = [canny, colorProfile, corners];
   var currentProcess = 0;
@@ -175,6 +190,10 @@ const processImage = function(path, callback) {
   const nextProcess = function(pixels) {
     if (currentProcess >= processes.length) {
       const outVector = [
+        // the two important dimensions
+        imageData['hueMode'],
+        imageData['numClusters'],
+        // the rest
         imageData['roughEdgeFrequency'],
         imageData['averageRed'],
         imageData['averageGreen'],
@@ -185,8 +204,7 @@ const processImage = function(path, callback) {
         imageData['hueDist'][3],
         imageData['hueDist'][4],
         imageData['hueDist'][5],
-        imageData['cornerDensity'],
-        imageData['numClusters']
+        imageData['cornerDensity']
       ];
       var weighted = [];
       for (var i = 0; i < outVector.length; ++i) {
