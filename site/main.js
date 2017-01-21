@@ -32,6 +32,7 @@ function getDataURL(){
     return true;
 }
 
+//show canvas, draw button
 function showCanvas(){
 
     function downsize(){
@@ -44,14 +45,31 @@ function showCanvas(){
     //hide vinyl
     TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 60, x: -308, onComplete:downsize});
 
-    //show textbarAlbums
+    //show textbar
     TweenMax.from(document.getElementById('helptext'), 1.5, { ease: Power2.easeInOut, x: 750});
+
+    //fade in pad
+    TweenMax.from(document.getElementById('aww-wrapper'), 1, { ease: Power2.easeInOut, opacity:0});
 
     /* add drawPad */
     $('#aww-wrapper').show();
     $('#helptext').show();
-    $("#cover").css("width", "600px");
+    $("#cover").css("width", "640px");
 }
+
+//show song details, go button
+function showSongDetail(){
+    //hide textbarAlbums
+    TweenMax.to(document.getElementById('helptext'), 1.5, { ease: Power2.easeInOut, x: 2000});
+
+    //show vinyl
+    TweenMax.to('.discAnimate', 1.8, { ease: Power2.easeInOut, rotation: 0, x: 0, scale: 1});
+
+    //hide pad
+  //  TweenMax.to(document.getElementById('aww-wrapper'), 2.3, { ease: Power2.easeInOut. x: -400});
+}
+
+
 
 function toggleBanner(state){
     if (state === 'hide') $('#introbar').addClass('hidden');

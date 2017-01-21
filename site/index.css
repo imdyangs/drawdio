@@ -138,7 +138,7 @@ h3.help-header{
 
     padding-left: 40px;
     padding-right: 30px;
-    
+
 }
 
 h5.comment{
@@ -202,7 +202,7 @@ h5.comment{
 #cover{
 
     /* div style */
-    width: 500px;
+    width: 560px;
     height: 500px;
     box-shadow: 0px 0px 10px 5px rgb(170, 170, 170);
     background-color: white;
@@ -210,7 +210,7 @@ h5.comment{
     /* intact with the div overhead */
     position: fixed;
     transform: translate(+13%, -50%);
-    right: 47%;
+    right: 47.5%;
     top: 50%;
 
 }
