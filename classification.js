@@ -125,12 +125,45 @@ const processImage = function(path, callback) {
     nextProcess(pixels);
   }
 
+  const getHueIndex = function (r, g, b) {
+    var min = Math.min(r, g, b);
+    var max = Math.max(r, g, b);
+    var result = 0;
+    if ((r > g) && (r > b)) {
+      result = (g - b) / (max - min);
+    }
+    else if ((g > r) && (g > b)) {
+      result = 2.0 + (b - r) / (max - min);
+    }
+    else if ((b > r) && (b > g)) {
+      result = 4.0 + (r - g) / (max - min);
+    }
+    if (result < 0) {
+      result += 6.0;
+    }
+    return Math.round(result);
+  }
+
   // sets averageRed, averageGreen, averageBlue, and hueDist
   const colorProfile = function (pixels) {
-    imageData['averageRed'] = 0;
-    imageData['averageGreen'] = 0;
-    imageData['averageBlue'] = 0;
-    imageData['hueDist'] = [0,0,0,0,0,0];
+    var sumRed = 0, sumGreen = 0, sumBlue = 0;
+    var numPixels = pixels.length / 4;
+    var hueDist = [0, 0, 0, 0, 0, 0];
+
+    for (var i = 0; i < pixels.length; i += 4) {
+      var r = pixels[i] / 255.0, g = pixels[i + 1] / 255.0, b = pixels[i + 2] / 255.0;
+      sumRed += r;
+      sumGreen += g;
+      sumBlue += b;
+      hueDist[getHueIndex(r, g, b)] += 1.0;
+    }
+
+    hueDist = hueDist.map(function (x) { return x / numPixels; });
+
+    imageData['averageRed'] = sumRed / numPixels;
+    imageData['averageGreen'] = sumGreen / numPixels;
+    imageData['averageBlue'] = sumBlue / numPixels;
+    imageData['hueDist'] = hueDist;
     nextProcess(pixels);
   }
 
