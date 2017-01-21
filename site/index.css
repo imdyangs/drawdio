@@ -1,8 +1,8 @@
-html { 
+html {
   /* background textures */
-  
+
   background: url("image/gray1.jpg") no-repeat center center fixed;
-  
+
   /*
   background: url("image/texturetastic_gray_@2X.png") no-repeat center center fixed;
   */
@@ -33,7 +33,7 @@ footer{
     bottom: 0%;
     right: 0%;
     transform: translate(0%, -50%);
-    
+
     /* text style */
     font-size: 10pt;
     font-family: Consolas, sans-serif;
@@ -55,7 +55,7 @@ button:hover{
     margin: 20px;
     padding-bottom: 5px;
     padding-top: 5px;
-    
+
     font-family: Consolas, sans-serif;
     font-size: 14pt;
 }
@@ -68,11 +68,11 @@ button:hover{
 
 .textbar{
     background-color: rgba(50, 50, 50, 0.75);
-    
+
     /* text element */
     color: white;
     text-align: right;
-    
+
     position: absolute;
     height: 100%;
 }
@@ -110,7 +110,7 @@ button:hover{
 #introbar{
     margin: 0px;
     padding: 30px;  /* hard coded */
-    
+
     width: 57%;    /* can adjust accordingly */
 }
 
@@ -131,7 +131,7 @@ button:hover{
 #helpdescription{
     text-align: center;
     padding-left: 10px;
-    
+
 }
 
 #draw-btn{
@@ -140,24 +140,24 @@ button:hover{
 }
 
 #cover{
-    
+
     /* div style */
     width: 500px;
     height: 500px;
     box-shadow: 0px 0px 10px 5px rgb(170, 170, 170);
     background-color: white;
-    
+
     /* intact with the div overhead */
     position: absolute;
     transform: translate(+13%, -50%);
     right: 47%;
     top: 50%;
-    
+
 }
 
 #disc{
     width: 500px;
-    
+
     /* achoring at the center */
     position: absolute;
     transform: translate(0, -50%);
