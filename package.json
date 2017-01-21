@@ -26,7 +26,10 @@
   "homepage": "https://github.com/sl/drawdio#readme",
   "dependencies": {
     "csvtojson": "^1.1.2",
+    "express": "^4.14.0",
+    "formidable": "^1.1.1",
     "gm": "^1.23.0",
+    "http": "0.0.0",
     "jpeg-js": "^0.2.0",
     "jsfeat": "0.0.8",
     "mongodb": "^2.2.21",
