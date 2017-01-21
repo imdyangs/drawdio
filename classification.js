@@ -3,20 +3,20 @@
 var fs = require('fs');
 var PNG = require('png-js');
 var jsfeat = require('jsfeat');
+var jpeg = require('jpeg-js');
 
 /*
   Creates a vector representing important features of the image given an image.
 */
-const processImage = function(path, callback) {
+const processImage = function(path, callback, isJpeg) {
   const blurRadius = 2;
   const lowThreshhold = 20;
   const highThreshold = 50;
 
-  console.log('attempting to load image at path: ' + path);
-  const image = new PNG.load(path);
-  const width = image.width;
-  const height = image.height;
+  var width;
+  var height;
 
+  
 
   // roughEdgeFrequency: percentage of pixels that contain a rough edge (0-1)
   // averageRed: average pixel red value from (0-1)
@@ -27,12 +27,7 @@ const processImage = function(path, callback) {
   // numClusters: the average distance in pixels between corners O(n^3)?
   var imageData = {};
 
-  image.decode(function(pixels) {
-    nextProcess(pixels);
-  });
-  
-
-  // sets imageData['roughEdgeFrequency']
+    // sets imageData['roughEdgeFrequency']
   const canny = function (pixels) {
     var img_u8 = new jsfeat.matrix_t(width, height, jsfeat.U8C1_t);
     var pixelArray = new Int32Array(pixels.buffer);
@@ -215,6 +210,22 @@ const processImage = function(path, callback) {
     }
     processes[currentProcess++](pixels);
   }
+
+  if (isJpeg) {
+    var jpegData = fs.readFileSync(path);
+    var rawImageData = jpeg.decode(jpegData);
+    width = rawImageData.width;
+    height = rawImageData.height;
+    nextProcess(rawImageData.data);
+  } else {
+    const image = new PNG.load(path);
+    width = image.width;
+    height = image.height;
+    image.decode(function(pixels) {
+      nextProcess(pixels);
+    });
+  }
+
 };
 
 function getRandomInt(min, max) {
