@@ -15,6 +15,12 @@ function saveBoard(){
   return img;
 }
 
+//hide drawPad
+$( document ).ready(function() {
+  $('#aww-wrapper').hide();
+  $('#helptext').hide();
+});
+
 // Change field of form to dataURL to prepare form submission
 function getDataURL(){
     document.getElementById('imgDataURL').value = saveBoard();
@@ -23,18 +29,16 @@ function getDataURL(){
 }
 
 function showCanvas(){
-    
+
     /* hide overhead banner */
     toggleBanner('hide');
     $('#disc').addClass('hidden');
-    
+
     /* add drawPad */
-    $('#aww-wrapper').removeClass('hidden');
-    $('#helptext').removeClass('hidden');
+    $('#aww-wrapper').show();
+    $('#helptext').show();
 }
 
 function toggleBanner(state){
     if (state === 'hide') $('#introbar').addClass('hidden');
 }
-
-
