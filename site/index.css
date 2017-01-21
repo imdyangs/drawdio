@@ -1,8 +1,8 @@
-html { 
+html {
   /* background textures */
-  
+
   background: url("image/gray1.jpg") no-repeat center center fixed;
-  
+
   /*
   background: url("image/texturetastic_gray_@2X.png") no-repeat center center fixed;
   */
@@ -13,14 +13,12 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  border: 0px;
+  margin: 0px;
 }
 
 h1{
     font-family: Poiret One, Didot, sans-serif;
-}
-
-h1.project-title{
-    font-size: 60pt;
 }
 
 body{
@@ -33,7 +31,7 @@ footer{
     bottom: 0%;
     right: 0%;
     transform: translate(0%, -50%);
-    
+
     /* text style */
     font-size: 10pt;
     font-family: Consolas, sans-serif;
@@ -51,11 +49,24 @@ button:hover{
     border: solid 3px black;
 }
 
+.returnButton{
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    transform: translate(-50%, -50%);
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
 .btn-label{
     margin: 20px;
     padding-bottom: 5px;
     padding-top: 5px;
-    
+
     font-family: Consolas, sans-serif;
     font-size: 14pt;
 }
@@ -68,22 +79,35 @@ button:hover{
 
 .textbar{
     background-color: rgba(50, 50, 50, 0.75);
-    
+
     /* text element */
     color: white;
     text-align: right;
-    
+
     position: absolute;
     height: 100%;
 }
 
+.textbarAlbums{
+  background-color: rgba(50, 50, 50, 0.75);
+
+  /* text element */
+  color: white;
+  text-align: right;
+
+  padding: 15px;
+  position: absolute;
+  height: 100%;
+}
+
 .center-description{
-    transform: translate(0, -50%);
+    transform: translate(0%, -50%);
     position: inherit;
     top: 50%;
 }
 
-/* General class */
+/********************* General class *********************/
+
 .hidden{
     display: none;
 }
@@ -94,7 +118,48 @@ button:hover{
     transform: translate(-50%, 0%);
 }
 
-/* unique component */
+.right{
+    text-align: right;
+    transform: translate(-50%, 0%);
+}
+
+h1.project-title{
+    font-size: 60pt;
+}
+
+h3.help-header{
+    text-align: left;
+    color: white;
+    font-family: Poiret One, sans-serif;
+    font-weight: 200;
+    font-size: 30pt;
+
+    margin-bottom: 5px;
+
+    padding-left: 40px;
+    padding-right: 30px;
+    
+}
+
+h5.comment{
+    font-size: 13pt;
+    color: rgb(200, 200, 200);
+
+    margin-top: 15px;
+}
+/********************* Special Class ********************/
+
+.recommendedArt{
+    width: 40%;
+    margin: 10px;
+}
+
+.recommendedArt:hover{
+    box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.9);
+}
+
+/********************* unique component *********************/
+
 #project-description{
     position: auto;
     width: 50%;
@@ -110,7 +175,7 @@ button:hover{
 #introbar{
     margin: 0px;
     padding: 30px;  /* hard coded */
-    
+
     width: 57%;    /* can adjust accordingly */
 }
 
@@ -128,11 +193,6 @@ button:hover{
     text-align: right;
 }
 
-#helpdescription{
-    text-align: center;
-    padding-left: 10px;
-    
-}
 
 #draw-btn{
     margin-right: 20px;
@@ -140,27 +200,31 @@ button:hover{
 }
 
 #cover{
-    
+
     /* div style */
     width: 500px;
     height: 500px;
     box-shadow: 0px 0px 10px 5px rgb(170, 170, 170);
     background-color: white;
-    
+
     /* intact with the div overhead */
-    position: absolute;
+    position: fixed;
     transform: translate(+13%, -50%);
     right: 47%;
     top: 50%;
-    
+
 }
 
 #disc{
     width: 500px;
-    
+
     /* achoring at the center */
-    position: absolute;
+    position: fixed;
     transform: translate(0, -50%);
     right: 20%;
     top: 50%;
+}
+
+#return-button{
+
 }

@@ -1,24 +1,28 @@
 /* This file controls front-end animation and page transition */
 
 
+/******************* Embedding Aww Board *******************/
+
 // Aww board API, board initialization
  var aww = new AwwBoard('#aww-wrapper', {
+    menuOrder: ['colors', 'sizes', 'tools'],
     apiKey: '391e33ce-16fb-41e9-aced-ad424988deba'
 });
 
 // Get dataURL of current canvas
 function saveBoard(){
   var img = aww.getImage();
-
-  // testing purpose: show current state of the canvas
-  //document.getElementById('preview').innerHTML = '<img src="'+img+'"/>';
   return img;
 }
 
-//hide drawPad
+
 $( document ).ready(function() {
+  //hide drawPad and textbarAlbums
   $('#aww-wrapper').hide();
   $('#helptext').hide();
+
+  //hide back button
+
 });
 
 // Change field of form to dataURL to prepare form submission
@@ -30,15 +34,34 @@ function getDataURL(){
 
 function showCanvas(){
 
-    /* hide overhead banner */
-    toggleBanner('hide');
-    $('#disc').addClass('hidden');
+    function downsize(){
+      TweenMax.to('.discAnimate', 1.5, {scale: 0.3})
+    }
+
+    //hide textbar
+    TweenMax.to('#introbar', 1.5, { ease: Power2.easeInOut, x: -1000});
+
+    //hide vinyl
+    TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 60, x: -308, onComplete:downsize});
+
+    //show textbarAlbums
+    TweenMax.from(document.getElementById('helptext'), 1.5, { ease: Power2.easeInOut, x: 750});
 
     /* add drawPad */
     $('#aww-wrapper').show();
     $('#helptext').show();
+    $("#cover").css("width", "600px");
 }
 
 function toggleBanner(state){
     if (state === 'hide') $('#introbar').addClass('hidden');
+}
+
+function lookForSong(){
+
+}
+
+
+function playSong(){
+
 }
