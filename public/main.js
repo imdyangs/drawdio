@@ -64,13 +64,15 @@ function showSongDetail(){
 
     //show vinyl
     TweenMax.to('.discAnimate', 0, {scale: 1});
-    TweenMax.to('.discAnimate', 1.8, { ease: Power2.easeInOut, rotation: 0, x: 0, scale: 1, delay: 0.7});
+    TweenMax.to('.discAnimate', 2.1, { ease: Power2.easeInOut, rotation: 20, x: -120 , scale: 1, delay: 0.4});
+    TweenMax.to('.discAnimate', 1.6, { ease: Power2.easeInOut, rotation: 60, x: -400, delay: 2.2 });
+    TweenMax.to('.discAnimate', 2.1, { ease: Power2.easeInOut, rotation: 40, x: -50, scale: 1, delay: 3.3});
+    TweenMax.to('.discAnimate', 1.6, { ease: Power2.easeInOut, rotation: 60, x: -308, delay: 5 });
 
     //hide pad
-    TweenMax.to(document.getElementById('aww-wrapper'), 2.2, { ease: Power2.easeInOut, x: -400, delay: 1.8});
-    TweenMax.to(document.getElementById('cover'), 2.2, { ease: Power2.easeInOut, x: -3300, delay: 1.8});
+    TweenMax.to(document.getElementById('aww-wrapper'), 2.2, { ease: Power2.easeInOut, x: -400, delay: 7});
+    TweenMax.to(document.getElementById('cover'), 2.2, { ease: Power2.easeInOut, x: -3300, delay: 7});
 }
-
 
 
 function toggleBanner(state){
