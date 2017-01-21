@@ -17,6 +17,10 @@ html {
   margin: 0px;
 }
 
+.aww-mobile-form {
+    font-color:green;
+}
+
 h1{
     font-family: Poiret One, Didot, sans-serif;
 }
