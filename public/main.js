@@ -107,7 +107,7 @@ function reveal(res) {
   document.getElementById('disc').src = res.images[0].url;
   document.getElementById('song-artist').innerHTML = res.artists[0].name;
   document.getElementById('song-title').innerHTML = res.tracks.items[0].name;
-  
+
   TweenMax.to('.discAnimate', 2.3, { ease: Power1.easeOut, rotation: 10, x: -70, scale: 1, delay: 5.2});
 
 
@@ -189,22 +189,52 @@ function saveBoard(){
     });
 }
 
+var playing = false;
+var currentSong = 0;
+
+var cachedResults;
+
 // handle API result
 function songReady(result){
-    
+  cachedResults = result;
+  var sampleLink = result.tracks.items[0].preview_url;
+  document.getElementById('audio_player').src = sampleLink;
 }
 
 // Action button controlling music streaming
 function playPauseSong(){
-
+  var audio = document.getElementById('audio_player');
+  if (!playing) {
+    audio.play();
+    playing = true;
+  } else {
+    audio.pause();
+    playing = false;
+  }
 }
 
 function nextSong(){
-    
+  var audio = document.getElementById('audio_player');
+  audio.pause();
+  currentSong++;
+  if (currentSong > cashedResults.tracks.items.length) {
+    currentSong = currentSong - 1;
+    return;
+  }
+  document.getElementById('audio_player').src = cachedResults.tracks.items[currentSong].preview_url;
+  audio.play();
 }
 
 function prevSong(){
-    
+  var audio = document.getElementById('audio_player');
+  audio.pause();
+  currentSong--;
+  if (currentSong < 0) {
+    currentSong = 0;
+    return;
+  }
+  document.getElementById('audio_player').src = cachedResults.tracks.items[currentSong].preview_url;
+  audio.play();
 }
 
 /****************** Transition Page ************************/

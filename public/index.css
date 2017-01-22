@@ -52,7 +52,7 @@ button{
     -webkit-transition:.5s;
 }
 
-button:hover{
+button:hover, button.disabled {
     color: black;
     border: solid 2px black;
 }
@@ -290,6 +290,10 @@ h5.comment{
     top: 50%;
     left: 2%;
     transform: translate(0, -50%);
+}
+
+#audio_player {
+    visibility: hidden;
 }
 
 #songDetail{
