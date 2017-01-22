@@ -9,7 +9,7 @@ $( document ).ready(function() {
   console.log("hiding!");
   $('#songDetail').hide();
   $('#back-icon').fadeOut();
-    
+
 });
 
 // Spotify api call
@@ -62,22 +62,23 @@ function showCanvas(){
     TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 60, x: -308, onComplete:downsize});
 
     //show textbar
-    TweenMax.from(document.getElementById('helptext'), 1.5, { ease: Power2.easeInOut, x: 750});
+    TweenMax.fromTo(document.getElementById('helptext'), 1.5, { ease: Power2.easeInOut, x: 750}, {x:0});
 
 
     //fade in pad
-    TweenMax.from(document.getElementById('aww-wrapper'), 1, { ease: SlowMo.ease.config(0.1, 0.1, false), opacity:0, delay: 0.7});
-
+    //TweenMax.from(document.getElementById('aww-wrapper'), 1, { ease: SlowMo.ease.config(0.1, 0.1, false), opacity:0, delay: 0.7});
+    TweenMax.fromTo(document.getElementById('aww-wrapper'), 1.8, {opacity: 0, delay:0.4}, {ease: Power2.easeInOut, opacity:1});
     //fade in returnButton
     TweenMax.to('.btnBox', 1.5, { ease: Power2.easeInOut, x: 450, delay: 1})
 
     /* add drawPad */
     $('#aww-wrapper').show();
     $('#helptext').show();
-    
+
+
     /* show backButton */
     $('#back-icon').fadeIn();
-    
+    TweenMax.to(document.getElementById('back-icon'), 1.2, {ease: Power2.easeInOut, x:0});
     /* keep track of current page */
     curPage = 'canvas';
 }
@@ -96,26 +97,24 @@ function showSongDetail(){
     TweenMax.to('.discAnimate', 2.4, { ease: Power2.easeInOut, rotation: 20, x: -170 , scale: 1, delay: 0.8});
     TweenMax.to('.discAnimate', 1.6, { ease: Power2.easeInOut, rotation: 60, x: -380, delay: 2.9 });
     canReveal = true;
-    
-    
+    TweenMax.to(document.getElementById('aww-wrapper'), 2, { ease: Power2.easeInOut, opacity: 0});
+
     curPage = 'song';
 }
-
 
 
 function reveal(res) {
   document.getElementById('disc').src = res.images[0].url;
   document.getElementById('song-artist').innerHTML = res.artists[0].name;
   document.getElementById('song-title').innerHTML = res.tracks.items[0].name;
-  
-  TweenMax.to('.discAnimate', 2.3, { ease: Power1.easeOut, rotation: 10, x: -70, scale: 1, delay: 5.2});
+
+   TweenMax.to('.discAnimate', 2.3, { ease: Power1.easeOut, rotation: 10, x: 0, scale: 1, delay: 5.2});
 
 
     //take the current spotify URI, extract the image link, then overlay image ontop of disc
 
     //hide pad
-    TweenMax.to(document.getElementById('aww-wrapper'), 2, { ease: Power2.easeInOut, opacity: 0});
-    TweenMax.to(document.getElementById('cover'), 3, { ease: Power2.easeInOut, x: -3300, delay: 9.3});
+    TweenMax.fromToto(document.getElementById('cover'), 3, {x:0}, { ease: Power2.easeInOut, x: -3300, delay: 9.3});
 
     //hide return
     TweenMax.to('.btnBox', 3, { ease: Power2.easeInOut, x: -800});
@@ -135,7 +134,7 @@ function lookForSong(){
     //$('#aww-wrapper').hide();
     //$('#cover').hide();
     //$('#helptext').hide();
-    $('#songDetail').show();
+    //$('#songDetail').show();
     $('#disc').addClass('clip-circle');
 
     // roll vinyl over
@@ -191,7 +190,7 @@ function saveBoard(){
 
 // handle API result
 function songReady(result){
-    
+
 }
 
 // Action button controlling music streaming
@@ -200,50 +199,61 @@ function playPauseSong(){
 }
 
 function nextSong(){
-    
+
 }
 
 function prevSong(){
-    
+
 }
 
 /****************** Transition Page ************************/
 
 /* Handle hide/show element of page transition */
 function backToCanvas(){
-    
+
     console.log('you invoked backToCanvas!');
-    
+
     /* hide song detail element */
-    $('#songDetail').hide();
-    $('#disc').attr('src', 'image/disc.png').removeClass('clip-circle');
-    
-    /* show canvas */
-    $('#helptext').show();
-    $('#cover').show();
-    $('#aww-wrapper').show();
-    
+  //  $('#songDetail').hide();
+    TweenMax.fromTo(document.getElementById('songDetail'), 2.2, {x:0} ,{ ease: Power2.easeOut, x: -800, delay: 9.8});
+  //  $('#disc').attr('src', 'image/disc.png').removeClass('clip-circle');
+    TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 60, x: -308});
+
+    /* show stuff */
+    //$('#helptext').show();
+    TweenMax.fromTo(document.getElementById('helptext'), 1.5, { ease: Power2.easeInOut, x: 750}, {x:0});
+
+    //$('#cover').show();
+    TweenMax.fromTo(document.getElementById('cover'), 3, { ease: Power2.easeInOut, x: -3300, delay: 1.3}, {x:70});
+
+//    $('#aww-wrapper').show();
+    TweenMax.fromTo(document.getElementById('aww-wrapper'), 1.8, {opacity: 0, delay:0.4}, {ease: Power2.easeInOut, opacity:1});
+
     /* update current page location */
     curPage = 'canvas';
 }
 
 function backToHome(){
-    
+
     console.log('you invoked backToHome!');
-    
+
     /* hide canvas elements */
-    $('#helptext').hide();
-    $('#aww-wrapper').hide();
-    
+  //  $('#helptext').hide();
+    TweenMax.to(document.getElementById('helptext'), 1.8, {ease: Power2.easeInOut, x: 800});
+    //$('#aww-wrapper').hide();
+
+    TweenMax.fromTo(document.getElementById('aww-wrapper'), 1.8, {opacity: 1}, {ease: Power2.easeInOut, opacity:0});
     /* show homepage elements */
-    $('#introbar').show();
-    
+  //  $('#introbar').show();
+    TweenMax.to(document.getElementById('introbar'), 1.8, {ease: Power2.easeInOut, x:0});
+
     /* missing line: vinyl row over */
-    $('#disc').show();
-    
+    TweenMax.to(document.getElementById('disc'), 0.3, {scale: 1});
+    TweenMax.to(document.getElementById('disc'), 1.8, {ease: Power2.easeInOut, x:0, rotation: 0});
+
     /* hide back icon */
-    $('#back-icon').fadeOut();
-    
+  //  $('#back-icon').fadeOut();
+    TweenMax.to(document.getElementById('back-icon'), 1.2, {ease: Power2.easeInOut, x:-300});
     /* update current page location */
     curPage = 'home';
 }
@@ -278,5 +288,3 @@ $('#back-icon').hover(function(){
 }, function(){
     $('#back-icon').attr('src', './image/buttons/back.png');
 });
-
-
