@@ -39,11 +39,7 @@ app.post('/handle', function(req, res) {
   var vectorize = classifier.processImage('temp/user-' + timeStamp + '.png',
     function (vector) {
       findSimilar(vector, function (match) {
-        if (match === null) {
-          res.send("__NO_MATCH__");
-        } else {
-          res.send(match.album_id);
-        }
+        res.send(match.album_id);
       });
     }, false);
 });
