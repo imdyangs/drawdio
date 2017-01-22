@@ -1,5 +1,14 @@
 /* This file controls front-end animation and page transition */
 
+$( document ).ready(function() {
+  //hide drawPad and textbarAlbums
+  $('#aww-wrapper').hide();
+  $('#helptext').hide();
+
+  //hide back button
+  console.log("hiding!");    
+  $('#songDetail').hide();
+});
 
 /******************* Embedding Aww Board *******************/
 
@@ -14,16 +23,6 @@ function saveBoard(){
   var img = aww.getImage();
   return img;
 }
-
-
-$( document ).ready(function() {
-  //hide drawPad and textbarAlbums
-  $('#aww-wrapper').hide();
-  $('#helptext').hide();
-
-  //hide back button
-
-});
 
 // Change field of form to dataURL to prepare form submission
 function getDataURL(){
@@ -81,7 +80,14 @@ function toggleBanner(state){
 }
 
 function lookForSong(){
-
+    $('#aww-wrapper').hide();
+    $('#cover').hide();
+    $('#helptext').hide();
+    $('#songDetail').show();
+    $('#disc').attr('src', 'image/art_vivalavida.jpg').addClass('clip-circle');
+    
+    // roll vinyl over
+    TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 270, x: 100});
 }
 
 function saveBoard(){
@@ -104,3 +110,21 @@ function saveBoard(){
 function playSong(){
 
 }
+
+$('#play').hover(function(){
+    $('#play').attr('src', './image/buttons/play-hov.png');
+}, function(){
+    $('#play').attr('src', './image/buttons/play.png');
+});
+
+$('#next').hover(function(){
+    $('#next').attr('src', './image/buttons/next-hov.png');
+}, function(){
+    $('#next').attr('src', './image/buttons/next.png');
+});
+
+$('#prev').hover(function(){
+    $('#prev').attr('src', './image/buttons/prev-hov.png');
+}, function(){
+    $('#prev').attr('src', './image/buttons/prev.png');
+});
