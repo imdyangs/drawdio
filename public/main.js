@@ -20,6 +20,7 @@ var aRequest = function(){
 }
 
 var curPage = 'home';
+var ready = false;      /* ready for streaming */
 
 /******************* Embedding Aww Board *******************/
 
@@ -152,6 +153,9 @@ function saveBoard(){
               success: function(res) {
                 imageURL = res.images[0].url;
                 console.log(imageURL);
+                  
+                // function that handles API result
+                songReady(res);
               },
               failure: function(jqXHR, textStatus, error) {
                 if (textStatus === 'timeout') {
@@ -172,14 +176,27 @@ function saveBoard(){
     });
 }
 
-// play song streamed from Spotify
-function playSong(){
+// handle API result
+function songReady(result){
+    
+}
+
+// Action button controlling music streaming
+function playPauseSong(){
 
 }
 
+function nextSong(){
+    
+}
+
+function prevSong(){
+    
+}
 
 /****************** Transition Page ************************/
 
+/* Handle hide/show element of page transition */
 function backToCanvas(){
     
     console.log('you invoked backToCanvas!');
@@ -218,13 +235,13 @@ function backToHome(){
     curPage = 'home';
 }
 
-// Handle page transition, whenever back button is clicked
+/* Handle page transition, whenever back button is clicked */
 function goBack(){
     if (curPage === 'song') backToCanvas();
     else if (curPage === 'canvas') backToHome();
 }
 
-// Change button attr
+/* Change button attr */
 $('#play').hover(function(){
     $('#play').attr('src', './image/buttons/play-hov.png');
 }, function(){
