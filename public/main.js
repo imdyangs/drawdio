@@ -19,7 +19,11 @@ var aRequest = function(){
 
 /******************* Embedding Aww Board *******************/
 
+
+var imageURL;
+
 // Aww board API, board initialization
+
  var aww = new AwwBoard('#aww-wrapper', {
     menuOrder: ['colors', 'sizes', 'tools'],
     apiKey: '391e33ce-16fb-41e9-aced-ad424988deba'
@@ -94,6 +98,7 @@ function showSongDetail(){
 
     //hide return
     TweenMax.to('.btnBox', 3, { ease: Power2.easeInOut, x: -800});
+    console.log(imageURL);
 
     //bring out player
     TweenMax.from(document.getElementById('songDetail'), 2.2, { ease: Power2.easeOut, x: -800, delay: 9.8});
@@ -119,6 +124,7 @@ function lookForSong(){
     //TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 270, x: 100});
 }
 
+
 function saveBoard(){
     var img = aww.getImage();
     console.log(img);
@@ -137,7 +143,8 @@ function saveBoard(){
               timeout: 0,
               success: function(res) {
                 var result = JSON.parse(res);
-                console.log(result.images[0].url)
+                console.log(result.images[0].url);
+                imageURL = JSON.parse(result.images[0].url);
               },
               failure: function(jqXHR, textStatus, error) {
                 if (textStatus === 'timeout') {
