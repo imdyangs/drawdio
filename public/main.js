@@ -85,19 +85,36 @@ function lookForSong(){
 }
 
 function saveBoard(){
-    var method = 'POST';
+    /*var method = 'POST';
     var async = true;
     var img = aww.getImage();
     var request = new XMLHttpRequest();
-    var url = 'localhost:3000';
+    var url = 'http://127.0.0.1:3000';
     request.onload = function () {
         var status = request.status;
         var data = request.responseText;
         // handle response (should be an album id) here
     }
     request.open(method, url, async)
-    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    request.send(img);
+    request.setRequestHeader("Content-Type", "image/png");
+    console.log(img);
+    request.send(img);*/
+    var img = aww.getImage();
+    $.ajax({
+        url: 'http://127.0.0.1:3000',
+        type: 'POST',
+        timeout: 0,
+        success: function (res) {
+            console.log(res);
+        },
+        error: function(jqXHR, textStatus, error) {
+            if (textStatus === 'timeout') {
+                console.log('request timed out');
+            } else {
+                console.log(error);
+            }
+        }
+    });
 }
 
 
