@@ -10,6 +10,13 @@ $( document ).ready(function() {
   $('#songDetail').hide();
 });
 
+// Spotify api call
+var aRequest = function(){
+  $.ajax({
+    url: ''
+  })
+}
+
 /******************* Embedding Aww Board *******************/
 
 // Aww board API, board initialization
@@ -64,7 +71,7 @@ function showCanvas(){
 
 
 function showSongDetail(){
-    var currentSpotifyId = 0;
+    var currentSpotifyURI = "spotify:artist:44gRHbEm4Uqa0ykW0rDTNk";
     //hide textbarAlbums
     TweenMax.to(document.getElementById('helptext'), 1.5, { ease: Power2.easeInOut, x: 2000});
 
@@ -124,6 +131,22 @@ function saveBoard(){
         // dataType: "json",
         success: function (res) {
             console.log(res);
+            $.ajax({
+              url: 'https://api.spotify.com/v1/albums/' + res,
+              type: 'GET',
+              timeout: 0,
+              success: function(res) {
+                var result = JSON.parse(res);
+                console.log(result.images[0].url)
+              },
+              failure: function(jqXHR, textStatus, error) {
+                if (textStatus === 'timeout') {
+                    console.log('request timed out');
+                } else {
+                    console.log(error);
+                }
+              }
+            });
         },
         error: function(jqXHR, textStatus, error) {
             if (textStatus === 'timeout') {
