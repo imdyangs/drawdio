@@ -110,7 +110,7 @@ function reveal(res) {
   document.getElementById('song-artist').innerHTML = res.artists[0].name;
   document.getElementById('song-title').innerHTML = res.tracks.items[0].name;
 
-  TweenMax.to('.discAnimate', 2.3, { ease: Power1.easeOut, rotation: 10, x: -70, scale: 1, delay: 5.2});
+  TweenMax.to('.discAnimate', 2.3, { ease: Power1.easeOut, rotation: 0, x: -70, scale: 1, delay: 5.2});
 
 
     //take the current spotify URI, extract the image link, then overlay image ontop of disc
@@ -120,11 +120,11 @@ function reveal(res) {
     TweenMax.to(document.getElementById('cover'), 3, { ease: Power2.easeInOut, x: -3300, delay: 9.3});
 
     //hide return
-    TweenMax.to('.btnBox', 3, { ease: Power2.easeInOut, x: -800});
+    //TweenMax.to('.btnBox', 3, { ease: Power2.easeInOut, x: -800});
     console.log(imageURL);
 
     //bring out player
-    TweenMax.from(document.getElementById('songDetail'), 2.2, { ease: Power2.easeOut, x: -800, delay: 9.8});
+    TweenMax.to(document.getElementById('songDetail'), 2.2, { ease: Power2.easeOut, x:0, delay: 9.8});
 }
 
 
@@ -132,7 +132,7 @@ function lookForSong(){
     //$('#aww-wrapper').hide();
     //$('#cover').hide();
     //$('#helptext').hide();
-  //  $('#songDetail').show();
+    $('#songDetail').show();
     $('#disc').addClass('clip-circle');
 
     // roll vinyl over
