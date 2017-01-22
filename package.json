@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/sl/drawdio#readme",
   "dependencies": {
+    "body-parser": "^1.16.0",
+    "cors": "^2.8.1",
     "csvtojson": "^1.1.2",
     "express": "^4.14.0",
     "formidable": "^1.1.1",
