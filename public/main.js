@@ -48,6 +48,7 @@ function getDataURL(){
     return true;
 }
 
+/*************** Animation ************************/
 //show canvas, draw button
 function showCanvas(){
 
@@ -102,7 +103,6 @@ function showSongDetail(){
 }
 
 
-
 function reveal(res) {
   document.getElementById('disc').src = res.images[0].url;
   document.getElementById('song-artist').innerHTML = res.artists[0].name;
@@ -125,11 +125,6 @@ function reveal(res) {
     TweenMax.from(document.getElementById('songDetail'), 2.2, { ease: Power2.easeOut, x: -800, delay: 9.8});
 }
 
-/*
-function toggleBanner(state){
-    if (state === 'hide') $('#introbar').addClass('hidden');
-}
-*/
 
 function lookForSong(){
     //$('#aww-wrapper').hide();
@@ -142,10 +137,19 @@ function lookForSong(){
     //TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 270, x: 100});
 }
 
+/************** 'Try These' Pictures *******************/
+
+$('.recommendedArt').on('click', function(){
+    console.log('you clicked the image!');
+    var img = $(this).attr('src');
+    console.log(img);
+    aww.drawImage(img, 0, 0);
+})
+
+/************** Sending DataURL for Processing *******************/
 
 function saveBoard(){
     var img = aww.getImage();
-    console.log(img);
     $.ajax({
         url: 'http://127.0.0.1:3000/handle',
         type: 'POST',
@@ -284,7 +288,9 @@ function goBack(){
     else if (curPage === 'canvas') backToHome();
 }
 
-/* Change button attr */
+
+/*************** Button Icon Attr ************************/
+
 $('#play').hover(function(){
     $('#play').attr('src', './image/buttons/play-hov.png');
 }, function(){
@@ -308,5 +314,4 @@ $('#back-icon').hover(function(){
 }, function(){
     $('#back-icon').attr('src', './image/buttons/back.png');
 });
-
 
