@@ -83,6 +83,7 @@ function findSimilar(vector, callback) {
           shortestDoc = docs[i];
         }
       }
+      albums.remove({album_id: shortestDoc.album_id}, true);
       db.close();
       callback(shortestDoc);
     });
