@@ -89,6 +89,7 @@ function saveBoard(){
     var async = true;
     var img = aww.getImage();
     var request = new XMLHttpRequest();
+    var url = '127.0.0.1:3000';
     request.onload = function () {
         var status = request.status;
         var data = request.responseText;
