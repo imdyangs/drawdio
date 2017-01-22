@@ -48,9 +48,10 @@ app.post('/handle', function(req, res) {
 // Connection URL
 var url = 'mongodb://localhost:27017/drawdio';
 
+// this is supposed to be the euclidian distance minus the first component
 function euclidianDistance(v1, v2) {
   var powerSum = 0;
-  for (var i = 0; i < v1.length; ++i) {
+  for (var i = 1; i < v1.length; ++i) {
     powerSum += Math.pow(v1[i] - v2[i], 2);
   }
   return Math.sqrt(powerSum);
@@ -66,7 +67,7 @@ function findSimilar(vector, callback) {
     var albums = db.collection('albums');
 
     albums.find({
-      hue_mode:{ $gt: hueMode - 15, $lt: hueMode + 15 },
+      hue_mode: { $gt: hueMode - 15, $lt: hueMode + 15 },
       processed: true
     }).toArray(function(err, docs) {
       if (docs.length === 0) {
