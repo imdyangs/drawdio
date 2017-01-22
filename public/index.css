@@ -91,7 +91,6 @@ button:hover{
     border: none;
     width: 40px;
     height: 40px;
-
 }
 
 .btn-label{
@@ -280,8 +279,17 @@ h5.comment{
 
 }
 
-#return-button{
-
+#back-icon{
+    /* dimension */
+    height: 10%;
+    
+    border: none;
+    
+    /* position */
+    position: fixed;
+    top: 50%;
+    left: 2%;
+    transform: translate(0, -50%);
 }
 
 #songDetail{

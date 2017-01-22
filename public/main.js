@@ -8,6 +8,8 @@ $( document ).ready(function() {
   //hide back button
   console.log("hiding!");
   $('#songDetail').hide();
+  $('#back-icon').fadeOut();
+    
 });
 
 // Spotify api call
@@ -16,6 +18,8 @@ var aRequest = function(){
     url: ''
   })
 }
+
+var curPage = 'home';
 
 /******************* Embedding Aww Board *******************/
 
@@ -38,7 +42,6 @@ function saveBoard(){
 // Change field of form to dataURL to prepare form submission
 function getDataURL(){
     document.getElementById('imgDataURL').value = saveBoard();
-    console.log(document.getElementById('imgDataURL').value);
     return true;
 }
 
@@ -68,6 +71,12 @@ function showCanvas(){
     /* add drawPad */
     $('#aww-wrapper').show();
     $('#helptext').show();
+    
+    /* show backButton */
+    $('#back-icon').fadeIn();
+    
+    /* keep track of current page */
+    curPage = 'canvas';
 }
 
 //show song details, go button
@@ -102,16 +111,15 @@ function showSongDetail(){
 
     //bring out player
     TweenMax.from(document.getElementById('songDetail'), 2.2, { ease: Power2.easeOut, x: -800, delay: 9.8});
+    
+    curPage = 'song';
 }
 
-
-
-
-
-
+/*
 function toggleBanner(state){
     if (state === 'hide') $('#introbar').addClass('hidden');
 }
+*/
 
 function lookForSong(){
     //$('#aww-wrapper').hide();
@@ -169,6 +177,54 @@ function playSong(){
 
 }
 
+
+/****************** Transition Page ************************/
+
+function backToCanvas(){
+    
+    console.log('you invoked backToCanvas!');
+    
+    /* hide song detail element */
+    $('#songDetail').hide();
+    $('#disc').attr('src', 'image/disc.png').removeClass('clip-circle');
+    
+    /* show canvas */
+    $('#helptext').show();
+    $('#cover').show();
+    $('#aww-wrapper').show();
+    
+    /* update current page location */
+    curPage = 'canvas';
+}
+
+function backToHome(){
+    
+    console.log('you invoked backToHome!');
+    
+    /* hide canvas elements */
+    $('#helptext').hide();
+    $('#aww-wrapper').hide();
+    
+    /* show homepage elements */
+    $('#introbar').show();
+    
+    /* missing line: vinyl row over */
+    $('#disc').show();
+    
+    /* hide back icon */
+    $('#back-icon').fadeOut();
+    
+    /* update current page location */
+    curPage = 'home';
+}
+
+// Handle page transition, whenever back button is clicked
+function goBack(){
+    if (curPage === 'song') backToCanvas();
+    else if (curPage === 'canvas') backToHome();
+}
+
+// Change button attr
 $('#play').hover(function(){
     $('#play').attr('src', './image/buttons/play-hov.png');
 }, function(){
@@ -186,3 +242,11 @@ $('#prev').hover(function(){
 }, function(){
     $('#prev').attr('src', './image/buttons/prev.png');
 });
+
+$('#back-icon').hover(function(){
+    $('#back-icon').attr('src', './image/buttons/back-hov.png');
+}, function(){
+    $('#back-icon').attr('src', './image/buttons/back.png');
+});
+
+
