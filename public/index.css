@@ -58,10 +58,22 @@ button:hover{
     margin-right: 5%;
 }
 
+.btnBox{
+    left: -400px;
+    width: 50px;
+    height: 400px;
+    position: absolute;
+    background-color: rgba(50, 50, 50, 0.75);
+    top: 20%;
+}
+
 .returnButton{
+    border: none;
+    width: 30px;
+    height: 30px;
     position: absolute;
     top: 50%;
-    left: 3%;
+    left: 1px
     transform: translate(-50%, -50%);
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
@@ -69,6 +81,13 @@ button:hover{
     transform: scaleX(-1);
     filter: FlipH;
     -ms-filter: "FlipH";
+}
+
+.returnButton:hover {
+    border: none;
+    width: 40px;
+    height: 40px;
+
 }
 
 .btn-label{
@@ -184,7 +203,7 @@ h5.comment{
 
 .clip-circle {
    clip-path: circle(250px at center);
-   
+
 }
 
 /********************* unique component *********************/
@@ -253,8 +272,8 @@ h5.comment{
     transform: translate(0, -50%);
     right: 20%;
     top: 50%;
-    
-    
+
+
 }
 
 #return-button{
@@ -265,23 +284,23 @@ h5.comment{
     /* position */
     position: absolute;
     transform: translate(0, -50%);
-    
+
     /* size */
     width: 55%;
     height: auto;
     background-color: rgba(220, 220, 220, 0.83);
-    
+
     /* anchor position */
     top: 50%;
     left: 0%;
-    
+
     /* padding */
     padding: 40px;
     padding-left: 12%;
     padding-top: 4%;
     padding-bottom: 3%;
     padding-right: 10%;
-    
+
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
 }
 
