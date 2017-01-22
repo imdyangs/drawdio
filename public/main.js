@@ -142,9 +142,8 @@ function saveBoard(){
               type: 'GET',
               timeout: 0,
               success: function(res) {
-                var result = JSON.parse(res);
-                console.log(result.images[0].url);
-                imageURL = JSON.parse(result.images[0].url);
+                imageURL = res.images[0].url;
+                console.log(imageURL);
               },
               failure: function(jqXHR, textStatus, error) {
                 if (textStatus === 'timeout') {
