@@ -16,9 +16,23 @@
 
 <body>
 
+    <!-- Music Title and Artist -->
+    <div id="songDetail">
+        <h4 class="artist" id="song-artist">Coldplay</h4>
+        <h2 class="title" id="song-title">Cementries of London</h2>
+        <div class="row">
+            <img class="music-btn" id="prev" src="image/buttons/prev.png">
+            <img class="music-btn" id="play" src="image/buttons/play.png">
+            <img class="music-btn" id="next" src="image/buttons/next.png">
+        </div>
+    </div>
+    
    <!-- rolling vinyl -->
-   <img src="image/disc_word.png" class="discAnimate" id="disc">
-
+   <div id="player">
+       <img src="image/disc_word.png" class="discAnimate" id="disc">
+       <img src="image/center.png" id="center-cog">
+   </div>
+    
    <!-- canvas -->
    <div id="cover">
         <div style="width:570px; height:500px;" id="aww-wrapper"></div>
@@ -53,23 +67,15 @@
                 <img class="recommendedArt" src="image/hamilton.jpg">
             </div>
             <br><br>
-            <button id="go" class="right" onClick="saveBoard();lookForSong(); showSongDetail()">
+            <button id="go" class="right" onClick="saveBoard();lookForSong();showSongDetail()">
                 <span class="btn-label">Go</span>
             </button>
             
         </div>
     </div>
 
-    <!-- Playing media -->
-    <div id="songDetail">
-    </div>
-
     <!-- return button -->
     <div class="returnButton" id="return-button"><img src="./image/returnButton.png"></div>
-
-    <!-- Playing media -->
-    <div id="songDetail">
-    </div>
 
    <footer>
        Created by Sam, Satoru, Tiffany, David in PennApps XV.
