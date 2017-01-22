@@ -6,7 +6,7 @@ $( document ).ready(function() {
   $('#helptext').hide();
 
   //hide back button
-  console.log("hiding!");    
+  console.log("hiding!");
   $('#songDetail').hide();
 });
 
@@ -51,6 +51,9 @@ function showCanvas(){
     //fade in pad
     TweenMax.from(document.getElementById('aww-wrapper'), 1, { ease: SlowMo.ease.config(0.1, 0.1, false), opacity:0, delay: 0.7});
 
+    //fade in returnButton
+    TweenMax.to('.btnBox', 1.5, { ease: Power2.easeInOut, x: 450, delay: 1.5})
+
     /* add drawPad */
     $('#aww-wrapper').show();
     $('#helptext').show();
@@ -66,7 +69,7 @@ function showSongDetail(){
     TweenMax.to('.discAnimate', 2.4, { ease: Power2.easeInOut, rotation: 20, x: -170 , scale: 1, delay: 0.8});
     TweenMax.to('.discAnimate', 1.6, { ease: Power2.easeInOut, rotation: 60, x: -380, delay: 2.9 });
     TweenMax.to('.discAnimate', 2.3, { ease: Power1.easeOut, rotation: 10, x: -70, scale: 1, delay: 5.2});
-    TweenMax.to('.discAnimate', 1.4, { ease: Power2.easeInOut, rotation: 60, x: -340, delay: 7.4 });
+    TweenMax.to('.discAnimate', 1.2, { ease: Power2.easeInOut, rotation: 60, x: -340, delay: 7.4 });
     TweenMax.to('.discAnimate', 1.6, { ease: Power2.easeInOut, rotation: 0, x: 20, delay: 9 });
 
     //hide pad
@@ -85,7 +88,7 @@ function lookForSong(){
     //$('#helptext').hide();
     $('#songDetail').show();
     $('#disc').attr('src', 'image/art_vivalavida.jpg').addClass('clip-circle');
-    
+
     // roll vinyl over
     //TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 270, x: 100});
 }
