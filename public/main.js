@@ -80,14 +80,14 @@ function toggleBanner(state){
 }
 
 function lookForSong(){
-    $('#aww-wrapper').hide();
-    $('#cover').hide();
-    $('#helptext').hide();
+    //$('#aww-wrapper').hide();
+    //$('#cover').hide();
+    //$('#helptext').hide();
     $('#songDetail').show();
     $('#disc').attr('src', 'image/art_vivalavida.jpg').addClass('clip-circle');
     
     // roll vinyl over
-    TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 270, x: 100});
+    //TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 270, x: 100});
 }
 
 function saveBoard(){
@@ -106,7 +106,7 @@ function saveBoard(){
     request.send(img);
 }
 
-
+// play song streamed from Spotify
 function playSong(){
 
 }
