@@ -96,10 +96,15 @@ function showSongDetail(){
 
   //show vinyl
   TweenMax.to('.discAnimate', 0, {scale: 1});
-  TweenMax.to('.discAnimate', 2.4, { ease: Power2.easeInOut, rotation: 20, x: -170 , scale: 1, delay: 0.8});
-  TweenMax.to('.discAnimate', 1.6, { ease: Power2.easeInOut, rotation: 60, x: -380, delay: 2.9 });
+  TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 20, x: -170 , scale: 1, delay: 1.4});
+  TweenMax.to('.discAnimate', 1.3, { ease: Power3.easeInOut, rotation: 60, x: -380, delay: 2.9 });
+  TweenMax.to('.discAnimate', 1.5, { ease: Power1.easeOut, rotation: 10, x: -75, scale: 1, delay: 5.1});
+  TweenMax.to('.discAnimate', 1.85, { ease: Power4.easeInOut, rotation: 60, x: -380, delay: 6.7});
+
   canReveal = true;
   TweenMax.to(document.getElementById('aww-wrapper'), 2, { ease: Power2.easeInOut, opacity: 0});
+
+  TweenMax.to('.discAnimate', 2.2, { ease: Power2.easeInOut, rotation: 0, x: 75, scale: 1, delay: 8.2});
 
   curPage = 'song';
 }
@@ -110,21 +115,20 @@ function reveal(res) {
   document.getElementById('song-artist').innerHTML = res.artists[0].name;
   document.getElementById('song-title').innerHTML = res.tracks.items[0].name;
 
-  TweenMax.to('.discAnimate', 2.3, { ease: Power1.easeOut, rotation: 0, x: -70, scale: 1, delay: 5.2});
-
+  
 
     //take the current spotify URI, extract the image link, then overlay image ontop of disc
 
     //hide pad
   //  TweenMax.to(document.getElementById('aww-wrapper'), 2, { ease: Power2.easeInOut, opacity: 0});
-    TweenMax.to(document.getElementById('cover'), 3, { ease: Power2.easeInOut, x: -3300, delay: 9.3});
+    TweenMax.fromTo(document.getElementById('cover'), 2, {opacity: 1}, {ease: Power2.easeInOut, x: -3300, delay: 8.2});
 
     //hide return
     //TweenMax.to('.btnBox', 3, { ease: Power2.easeInOut, x: -800});
     console.log(imageURL);
 
     //bring out player
-    TweenMax.to(document.getElementById('songDetail'), 2.2, { ease: Power2.easeOut, x:0, delay: 9.8});
+    TweenMax.fromTo(document.getElementById('songDetail'), 1.65, { opacity: 0,ease: Power3.easeOut, x:-1200}, {opacity:1, ease: Power3.easeOut, x:0, delay: 8.26});
 }
 
 
@@ -133,6 +137,7 @@ function lookForSong(){
     //$('#cover').hide();
     //$('#helptext').hide();
     $('#songDetail').show();
+    TweenMax.fromTo(document.getElementById('songDetail'), 0, {opacity:0}, {x:-4000, opacity:0});
     $('#disc').addClass('clip-circle');
 
     // roll vinyl over
@@ -252,7 +257,7 @@ function backToCanvas(){
 
   /* hide song detail element */
 //  $('#songDetail').hide();
-  TweenMax.fromTo(document.getElementById('songDetail'), 2.2, {x:0} ,{ ease: Power2.easeOut, x: -800, delay: 9.8});
+  TweenMax.fromTo(document.getElementById('songDetail'), 2.2, {x:0} ,{ ease: Power2.easeOut, x: -800, delay: 0});
 //  $('#disc').attr('src', 'image/disc.png').removeClass('clip-circle');
   TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 60, x: -308});
 
@@ -302,14 +307,37 @@ function goBack(){
 }
 
 
+// Button Change, Pause Play
+function changePausePlay(){
+
+}
+// When ta spin????
+var switchBool = false;
+function switchSpinBoolean(bool){
+  bool = !bool;
+}
+while (switchBool) {
+  TweenMax.to('disc', 5, {rotation:"360", repeat:-1});
+};
+
+
 /*************** Button Icon Attr ************************/
 
-$('#play').hover(function(){
-    $('#play').attr('src', './image/buttons/play-hov.png');
+$('#back-icon').hover(function(){
+    $('#back-icon').attr('src', './image/buttons/back-hov.png');
 }, function(){
-    $('#play').attr('src', './image/buttons/play.png');
+    $('#back-icon').attr('src', './image/buttons/back.png');
 });
 
+$('#play').hover(function(){
+    if (playing) $('#play').attr('src', './image/buttons/pause-hov.png');
+    else ($('#play').attr('src', './image/buttons/play-hov.png'));
+}, function(){
+    if (playing) $('#play').attr('src', './image/buttons/pause.png');
+    else ($('#play').attr('src', './image/buttons/play.png'));
+});
+
+/*  Unimplemented: next, prev button */
 $('#next').hover(function(){
     $('#next').attr('src', './image/buttons/next-hov.png');
 }, function(){
@@ -322,8 +350,3 @@ $('#prev').hover(function(){
     $('#prev').attr('src', './image/buttons/prev.png');
 });
 
-$('#back-icon').hover(function(){
-    $('#back-icon').attr('src', './image/buttons/back-hov.png');
-}, function(){
-    $('#back-icon').attr('src', './image/buttons/back.png');
-});
