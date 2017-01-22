@@ -3,8 +3,8 @@ TweenMax.from('.discAnimate', 2, {scale: 0.9, rotation: 60, x: -290, ease: Back.
 
 
 //textbar fade in
-TweenMax.from('.imageClass', 1.2, {opacity: 0, delay: 2.1});
-TweenMax.from('.description', 1.2, {opacity: 0, delay: 2.5});
-TweenMax.from('.buttonClass', 1.2, {opacity: 0, delay: 3});
+TweenMax.from('.imageClass', 1.2, {opacity: 0, delay: 2.3});
+TweenMax.from('.description', 1.2, {opacity: 0, delay: 3.1});
+TweenMax.from('.buttonClass', 1.2, {opacity: 0, delay: 4});
 
 //TweenMax.to('.textbar', 3, {x: -1000})

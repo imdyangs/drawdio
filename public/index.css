@@ -44,13 +44,17 @@ footer{
 
 button{
     background: none;
-    border: solid 3px white;
+    border: solid 2px white;
     color: white;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
 }
 
 button:hover{
     color: black;
-    border: solid 3px black;
+    border: solid 2px black;
 }
 
 .music-btn{
@@ -95,8 +99,8 @@ button:hover{
     padding-bottom: 5px;
     padding-top: 5px;
 
-    font-family: Consolas, sans-serif;
-    font-size: 14pt;
+    font-family: Cochin, sans-serif;
+    font-size: 12pt;
 }
 
 .description{
