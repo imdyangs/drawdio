@@ -22,7 +22,7 @@ app.options('*', cors());
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.raw());
-app.use(bodyParser.json({extended: true}))
+app.use(bodyParser.json({extended: true, limit: '50mb'}))
 
 app.set('port', PORT);
 
