@@ -114,10 +114,14 @@ function lookForSong(){
 
 function saveBoard(){
     var img = aww.getImage();
+    console.log(img);
     $.ajax({
-        url: 'http://127.0.0.1:3000',
+        url: 'http://127.0.0.1:3000/handle',
         type: 'POST',
         timeout: 0,
+        data: JSON.stringify({ img: img }),
+        contentType: "application/json; charset=utf-8",
+        // dataType: "json",
         success: function (res) {
             console.log(res);
         },
