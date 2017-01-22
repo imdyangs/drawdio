@@ -218,9 +218,11 @@ function playPauseSong(){
   if (!playing) {
     audio.play();
     playing = true;
+    rotateVinyl(true);
   } else {
     audio.pause();
     playing = false;
+    rotateVinyl(false);
   }
 }
 
@@ -256,19 +258,14 @@ function backToCanvas(){
   console.log('you invoked backToCanvas!');
 
   /* hide song detail element */
-//  $('#songDetail').hide();
   TweenMax.fromTo(document.getElementById('songDetail'), 2.2, {x:0} ,{ ease: Power2.easeOut, x: -800, delay: 0});
-//  $('#disc').attr('src', 'image/disc.png').removeClass('clip-circle');
   TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 60, x: -308});
 
   /* show stuff */
-  //$('#helptext').show();
   TweenMax.fromTo(document.getElementById('helptext'), 1.5, { ease: Power2.easeInOut, x: 750}, {x:0});
 
-  //$('#cover').show();
   TweenMax.fromTo(document.getElementById('cover'), 3, { ease: Power2.easeInOut, x: -3300, delay: 1.3}, {x:70});
 
-//    $('#aww-wrapper').show();
   TweenMax.fromTo(document.getElementById('aww-wrapper'), 1.8, {opacity: 0, delay:0.4}, {ease: Power2.easeInOut, opacity:1});
 
   /* update current page location */
@@ -280,13 +277,11 @@ function backToHome(){
   console.log('you invoked backToHome!');
 
   /* hide canvas elements */
-//  $('#helptext').hide();
   TweenMax.to(document.getElementById('helptext'), 1.8, {ease: Power2.easeInOut, x: 800});
-  //$('#aww-wrapper').hide();
 
   TweenMax.fromTo(document.getElementById('aww-wrapper'), 1.8, {opacity: 1}, {ease: Power2.easeInOut, opacity:0});
+    
   /* show homepage elements */
-//  $('#introbar').show();
   TweenMax.to(document.getElementById('introbar'), 1.8, {ease: Power2.easeInOut, x:0});
 
   /* missing line: vinyl row over */
@@ -294,8 +289,8 @@ function backToHome(){
   TweenMax.to(document.getElementById('disc'), 1.8, {ease: Power2.easeInOut, x:0, rotation: 0});
 
   /* hide back icon */
-//  $('#back-icon').fadeOut();
   TweenMax.to(document.getElementById('back-icon'), 1.2, {ease: Power2.easeInOut, x:-300});
+    
   /* update current page location */
   curPage = 'home';
 }
@@ -350,3 +345,19 @@ $('#prev').hover(function(){
     $('#prev').attr('src', './image/buttons/prev.png');
 });
 
+/*************** Spinning Animation ************************/
+
+function rotateVinyl(rotate){
+    if (rotate){
+        $('#disc').css({
+            '-webkit-animation-play-state': 'running',
+            'animation-play-state' : 'running',
+        });
+    }
+    else{
+         $('#disc').css({
+            '-webkit-animation-play-state': 'paused',
+            'animation-play-state' : 'paused',
+        });
+    }
+}
