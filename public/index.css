@@ -53,6 +53,11 @@ button:hover{
     border: solid 3px black;
 }
 
+.music-btn{
+    width: 10%;
+    margin-right: 5%;
+}
+
 .returnButton{
     position: absolute;
     top: 50%;
@@ -178,7 +183,8 @@ h5.comment{
 }
 
 .clip-circle {
-  clip-path: circle(250px at center);
+   clip-path: circle(250px at center);
+   
 }
 
 /********************* unique component *********************/
@@ -247,6 +253,8 @@ h5.comment{
     transform: translate(0, -50%);
     right: 20%;
     top: 50%;
+    
+    
 }
 
 #return-button{
@@ -269,8 +277,8 @@ h5.comment{
     
     /* padding */
     padding: 40px;
-    padding-left: 10%;
-    padding-top: 3%;
+    padding-left: 12%;
+    padding-top: 4%;
     padding-bottom: 3%;
     padding-right: 10%;
     
@@ -287,6 +295,7 @@ h5.comment{
 
     position: absolute;
     width: 5%;
+    transform: translate(+250%, -50%);
     top: 50%;
     left: 50%;
 }
