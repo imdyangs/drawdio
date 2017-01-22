@@ -22,6 +22,8 @@ var aRequest = function(){
 var curPage = 'home';
 var ready = false;      /* ready for streaming */
 
+var canReveal = false;
+
 /******************* Embedding Aww Board *******************/
 
 
@@ -93,12 +95,21 @@ function showSongDetail(){
     TweenMax.to('.discAnimate', 0, {scale: 1});
     TweenMax.to('.discAnimate', 2.4, { ease: Power2.easeInOut, rotation: 20, x: -170 , scale: 1, delay: 0.8});
     TweenMax.to('.discAnimate', 1.6, { ease: Power2.easeInOut, rotation: 60, x: -380, delay: 2.9 });
-    TweenMax.to('.discAnimate', 2.3, { ease: Power1.easeOut, rotation: 10, x: -70, scale: 1, delay: 5.2});
+    canReveal = true;
+    
+    
+    curPage = 'song';
+}
 
-  // while(currentSpotifyId === 0){
-  //  TweenMax.to('.discAnimate', 1.2, { ease: Power2.easeInOut, rotation: 60, x: -340, delay: 7.4 });
-  //  TweenMax.to('.discAnimate', 1.6, { ease: Power2.easeInOut, rotation: 0, x: 20, delay: 9 });
-  //};
+
+
+function reveal(res) {
+  document.getElementById('disc').src = res.images[0].url;
+  document.getElementById('song-artist').innerHTML = res.artists[0].name;
+  document.getElementById('song-title').innerHTML = res.tracks.items[0].name;
+  
+  TweenMax.to('.discAnimate', 2.3, { ease: Power1.easeOut, rotation: 10, x: -70, scale: 1, delay: 5.2});
+
 
     //take the current spotify URI, extract the image link, then overlay image ontop of disc
 
@@ -112,8 +123,6 @@ function showSongDetail(){
 
     //bring out player
     TweenMax.from(document.getElementById('songDetail'), 2.2, { ease: Power2.easeOut, x: -800, delay: 9.8});
-    
-    curPage = 'song';
 }
 
 /*
@@ -127,7 +136,7 @@ function lookForSong(){
     //$('#cover').hide();
     //$('#helptext').hide();
     $('#songDetail').show();
-    $('#disc').attr('src', 'image/art_vivalavida.jpg').addClass('clip-circle');
+    $('#disc').addClass('clip-circle');
 
     // roll vinyl over
     //TweenMax.to('.discAnimate', 1.5, { ease: Power2.easeInOut, rotation: 270, x: 100});
@@ -151,10 +160,14 @@ function saveBoard(){
               type: 'GET',
               timeout: 0,
               success: function(res) {
-                imageURL = res.images[0].url;
-                console.log(imageURL);
-                  
-                // function that handles API result
+                tryReveal();
+                function tryReveal() {
+                  if (canReveal) {
+                    reveal(res);
+                  } else {
+                    setTimeout(tryReveal, 50);
+                  }
+                }
                 songReady(res);
               },
               failure: function(jqXHR, textStatus, error) {
