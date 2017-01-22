@@ -177,7 +177,7 @@ const processImage = function(path, callback, isJpeg) {
     nextProcess(pixels);
   }
 
-  const weights = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+  const weights = [1, 1, 100, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1000];
 
   const processes = [canny, colorProfile, corners];
   var currentProcess = 0;
